@@ -1,0 +1,2 @@
+(Optional LLM rewrite step - not used by the default extractive pipeline.)
+Rewrite each risk clause as one bullet of at most 20 words, keeping its [FILING_ID, Section] citation. Do not add facts.

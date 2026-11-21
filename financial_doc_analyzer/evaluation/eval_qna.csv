@@ -1,0 +1,54 @@
+question,filing_id,answer_terms,gold_section,reference_answer,expect_answer,split
+What are the key risks mentioned?,ACMR_2023,risk;regulatory;breach,Risk Factors,"Key risks include cybersecurity incidents and data breaches, supply chain concentration, regulatory changes in privacy and financial reporting, customer churn if service-level agreements are not met, and foreign exchange volatility.",1,dev
+Which operations segments are listed?,ACMR_2022,cloud;on-premise;segments,Business,ACMR has two segments: Cloud Services and On-Premise Licenses.,1,dev
+What are the cybersecurity risks for ACMR-2023?,ACMR_2023,cybersecurity;data breaches,Risk Factors,Cybersecurity incidents and data breaches could disrupt operations and lead to regulatory penalties.,1,dev
+What was ACMR_2023 total revenue?,ACMR_2023,$1200M,Financials,ACMR's total revenue in 2023 was $1200M.,1,dev
+What is the gross margin for ZYNT_2023?,ZYNT_2023,55%,Financials,ZYNT's gross margin in 2023 was 55%.,1,dev
+How much did FINC_2023 spend on R&D as a percent of revenue?,FINC_2023,18%,Financials,FINC's R&D spending was 18% of revenue in 2023.,1,dev
+Does ACMR_2022 mention foreign exchange risk?,ACMR_2022,foreign exchange;volatility,Risk Factors,"Yes, foreign exchange volatility could impact margins.",1,dev
+What legal proceedings is HLXR_2022 involved in?,HLXR_2022,patent;infringement,Legal Proceedings,A competitor filed a patent infringement complaint against HLXR in 2022; the company believes the claims are without merit and intends to defend vigorously.,1,dev
+What is the status of the patent lawsuit in HLXR_2023?,HLXR_2023,pending;discovery,Legal Proceedings,The patent infringement matter filed in 2022 remains pending and discovery is ongoing.,1,dev
+What markets does QRTX_2021 operate in?,QRTX_2021,Europe;Latin America,Business,QRTX operates in Europe and Latin America.,1,dev
+What segments does HLXR_2023 report?,HLXR_2023,Provider Analytics;Payer Solutions,Business,HLXR reports two segments: Provider Analytics and Payer Solutions.,1,dev
+What does management say about trends in QRTX_2023?,QRTX_2023,take rates;fraud-detection,MD&A,Management notes stabilizing take rates and investments in fraud-detection models.,1,dev
+What interest rate risk does QRTX_2022 describe?,QRTX_2022,interest rates;funding costs,Risk Factors,Rising interest rates may increase funding costs for settlement float.,1,dev
+Is customer churn a risk for FINC_2021?,FINC_2021,churn;service-level,Risk Factors,"Yes, customer churn is a risk if service-level agreements are not met.",1,dev
+What competition risks does ACMR_2021 face?,ACMR_2021,competition;pricing pressure,Risk Factors,Intense competition and pricing pressure from larger platform vendors could reduce market share.,1,dev
+Which regulatory inquiry affects QRTX_2023?,QRTX_2023,regulator;inquiry;anti-money laundering,Legal Proceedings,A regulator in one European market opened an inquiry into QRTX's anti-money laundering controls.,1,dev
+What is the CEO's compensation at ACMR_2023?,ACMR_2023,,,,0,dev
+How many employees does ZYNT_2022 have?,ZYNT_2022,,,,0,dev
+What cybersecurity risks does ACMR_2020 have?,ACMR_2020,,,,0,dev
+Compare total revenue for ACMR_2022 and ACMR_2023,ACMR_2022;ACMR_2023,$619M;$1200M,Financials,ACMR's total revenue was $619M in 2022 and $1200M in 2023.,1,dev
+What are the cybersecurity risks for HLXR_2021?,HLXR_2021,unauthorized access;data breaches,Risk Factors,"Unauthorized access to protected health information could result in data breaches, regulatory penalties, and reputational harm.",1,test
+What was FINC_2022 total revenue?,FINC_2022,$990M,Financials,FINC's total revenue in 2022 was $990M.,1,test
+What supply chain risks are disclosed in ZYNT_2022?,ZYNT_2022,supply chain;single-source,Risk Factors,Supply chain concentration and single-source vendors may cause fulfillment delays.,1,test
+What is the R&D spend ratio of QRTX_2023?,QRTX_2023,13%,Financials,QRTX's R&D spending was 13% of revenue in 2023.,1,test
+Which segments does QRTX_2022 operate?,QRTX_2022,Merchant Processing;Consumer Wallet,Business,QRTX has two segments: Merchant Processing and Consumer Wallet.,1,test
+What did management discuss in HLXR_2022 MD&A?,HLXR_2022,bookings;retention;sales cycles,MD&A,"Management discusses contract bookings, net revenue retention and opex discipline, and notes longer sales cycles at large health systems.",1,test
+Does ZYNT_2023 have any litigation?,ZYNT_2023,routine litigation,Legal Proceedings,"ZYNT is subject to routine litigation, but no proceedings are expected to have a material adverse effect.",1,test
+What privacy regulation risks does HLXR_2023 mention?,HLXR_2023,HIPAA;privacy,Risk Factors,Changes to HIPAA and other health data privacy rules could increase compliance costs.,1,test
+What talent risks does QRTX_2023 face?,QRTX_2023,,,,0,test
+What is the foreign exchange risk for QRTX_2023?,QRTX_2023,foreign exchange;currencies,Risk Factors,Foreign exchange volatility across euro and Latin American currencies could reduce reported revenue.,1,test
+What is the revenue growth driver for HLXR_2022?,HLXR_2022,hospital;payer,Business|MD&A,Revenue grew due to new hospital system contracts and expanded payer analytics modules.,1,test
+What is the gross margin of HLXR_2021?,HLXR_2021,71%,Financials,HLXR's gross margin in 2021 was 71%.,1,test
+What dividend did FINC_2022 pay?,FINC_2022,,,,0,test
+Does ACMR_2023 have climate change risk?,ACMR_2023,,,,0,test
+How did ZYNT's gross margin change from 2022 to 2023?,ZYNT_2022;ZYNT_2023,74%;55%,Financials,ZYNT's gross margin fell from 74% in 2022 to 55% in 2023.,1,test
+What are the key risks in HLXR_2021?,HLXR_2021,unauthorized access;HIPAA;attrition,Risk Factors,"Key risks are unauthorized access to protected health information, changes to health data privacy rules, dependence on large hospital customers, and attrition of data scientists and engineers.",1,test
+What does FINC_2022 say about its key markets?,FINC_2022,APAC;North America,Business,FINC's key markets include APAC and North America.,1,test
+Tell me about supply chain exposure in FINC 2023,FINC_2023,supply chain;single-source,Risk Factors,Supply chain concentration and single-source vendors may cause fulfillment delays.,1,blind
+what was the revenue for qrtx-2022,QRTX_2022,$402M,Financials,QRTX's total revenue in 2022 was $402M.,1,blind
+Any concerns about service level agreements at ZYNT_2021?,ZYNT_2021,service-level;churn,Risk Factors,Customer churn is a risk if service-level agreements are not met.,1,blind
+Which regulator opened an inquiry into anti-money laundering controls?,QRTX_2023,regulator;inquiry,Legal Proceedings,A regulator in one European market opened an inquiry into QRTX's anti-money laundering controls.,1,blind
+What is the total revenue of HLXR 2023?,HLXR_2023,$301M,Financials,HLXR's total revenue in 2023 was $301M.,1,blind
+How is ZYNT_2021 exposed to competition?,ZYNT_2021,competition;pricing pressure,Risk Factors,Intense competition and pricing pressure from larger platform vendors could reduce market share.,1,blind
+What is HLXR's R&D intensity in 2022?,HLXR_2022,23%,Financials,HLXR's R&D was 23% of revenue in 2022.,1,blind
+Summarize the legal proceedings for HLXR_2022,HLXR_2022,patent;infringement,Legal Proceedings,A competitor filed a patent infringement complaint against HLXR in 2022; the company believes the claims are without merit and will defend vigorously.,1,blind
+What currency risk does QRTX_2022 disclose?,QRTX_2022,foreign exchange;currencies,Risk Factors,Foreign exchange volatility across euro and Latin American currencies could reduce reported revenue.,1,blind
+What is the CFO's name for FINC_2023?,FINC_2023,,,,0,blind
+Does QRTX_2021 mention interest rate risk?,QRTX_2021,,,,0,blind
+What did FINC_2021 report for gross margin?,FINC_2021,64%,Financials,FINC's gross margin in 2021 was 64%.,1,blind
+Describe the business of ACMR_2022,ACMR_2022,enterprise software;segments,Business,"ACMR operates in the enterprise software market with two segments, Cloud Services and On-Premise Licenses, serving APAC and North America.",1,blind
+What are the key risks in ZYNT_2022?,ZYNT_2022,cybersecurity;supply chain;privacy,Risk Factors,"Key risks are cybersecurity incidents and data breaches, supply chain concentration, privacy and financial reporting regulation, customer churn if service levels are missed, and foreign exchange volatility.",1,blind
+What risks does HLXR_2022 face from patents?,HLXR_2022,patents;infringe,Risk Factors|Legal Proceedings,"A competitor has asserted that certain features infringe its patents, and defending such claims could be costly.",1,blind
+How large was ZYNT_2021 revenue?,ZYNT_2021,$355M,Financials,ZYNT's total revenue in 2021 was $355M.,1,blind

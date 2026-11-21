@@ -1,0 +1,3 @@
+(Optional LLM synthesis step - not used by the default extractive pipeline.)
+Answer the question in 2-3 sentences using ONLY the evidence below. Cite as [FILING_ID, Section].
+If the evidence does not contain the answer, reply exactly: I don't know.

@@ -1,0 +1,77 @@
+{
+  "ACMR_2022": [
+    "cybersecurity",
+    "regulatory compliance",
+    "supply chain"
+  ],
+  "ACMR_2023": [
+    "data breach",
+    "vendor concentration",
+    "foreign exchange volatility"
+  ],
+  "FINC_2022": [
+    "privacy regulation",
+    "SLA performance",
+    "litigation exposure"
+  ],
+  "ACMR_2021": [
+    "cybersecurity",
+    "privacy regulation",
+    "competition"
+  ],
+  "FINC_2021": [
+    "data breach",
+    "supply chain",
+    "competition"
+  ],
+  "FINC_2023": [
+    "data breach",
+    "supply chain",
+    "foreign exchange volatility"
+  ],
+  "ZYNT_2021": [
+    "cybersecurity",
+    "privacy regulation",
+    "customer churn"
+  ],
+  "ZYNT_2022": [
+    "cybersecurity",
+    "regulatory compliance",
+    "customer churn"
+  ],
+  "ZYNT_2023": [
+    "cybersecurity",
+    "privacy regulation",
+    "foreign exchange volatility"
+  ],
+  "QRTX_2021": [
+    "payment fraud",
+    "licensing compliance",
+    "customer concentration"
+  ],
+  "QRTX_2022": [
+    "payment fraud",
+    "interest rate",
+    "foreign exchange volatility"
+  ],
+  "QRTX_2023": [
+    "payment fraud",
+    "licensing compliance",
+    "interest rate"
+  ],
+  "HLXR_2021": [
+    "data breach",
+    "privacy regulation",
+    "customer concentration"
+  ],
+  "HLXR_2022": [
+    "data breach",
+    "patent litigation",
+    "customer concentration"
+  ],
+  "HLXR_2023": [
+    "data breach",
+    "patent litigation",
+    "reimbursement policy"
+  ]
+}

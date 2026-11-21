@@ -1,0 +1,484 @@
+{
+ "openapi": "3.1.0",
+ "info": {
+  "title": "Financial Document Analyzer",
+  "description": "Clause-level Q&A (/qa) and risk summaries (/risksummary) over 10-K-style filings, served by a retrieval gateway (mock by default).",
+  "version": "0.2.0"
+ },
+ "paths": {
+  "/health": {
+   "get": {
+    "summary": "Health",
+    "operationId": "health_health_get",
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {}
+       }
+      }
+     }
+    }
+   }
+  },
+  "/qa": {
+   "post": {
+    "summary": "Qa",
+    "operationId": "qa_qa_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/QAReq"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/QAResp"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/risksummary": {
+   "post": {
+    "summary": "Risksummary",
+    "operationId": "risksummary_risksummary_post",
+    "requestBody": {
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/RiskReq"
+       }
+      }
+     },
+     "required": true
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/RiskResp"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/debug/retrieve": {
+   "post": {
+    "tags": [
+     "diagnostics"
+    ],
+    "summary": "Debug Retrieve",
+    "description": "Ranked (filing, section) list behind /qa. Used by scripts/eval_retrieval.py.",
+    "operationId": "debug_retrieve_debug_retrieve_post",
+    "parameters": [
+     {
+      "name": "top_k",
+      "in": "query",
+      "required": false,
+      "schema": {
+       "type": "integer",
+       "default": 5,
+       "title": "Top K"
+      }
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/json": {
+       "schema": {
+        "$ref": "#/components/schemas/QAReq"
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "Successful Response",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "array",
+         "items": {
+          "$ref": "#/components/schemas/RetrieveHit"
+         },
+         "title": "Response Debug Retrieve Debug Retrieve Post"
+        }
+       }
+      }
+     },
+     "422": {
+      "description": "Validation Error",
+      "content": {
+       "application/json": {
+        "schema": {
+         "$ref": "#/components/schemas/HTTPValidationError"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "components": {
+  "schemas": {
+   "Citation": {
+    "properties": {
+     "filing_id": {
+      "type": "string",
+      "title": "Filing Id"
+     },
+     "section": {
+      "type": "string",
+      "title": "Section"
+     }
+    },
+    "type": "object",
+    "required": [
+     "filing_id",
+     "section"
+    ],
+    "title": "Citation"
+   },
+   "Evidence": {
+    "properties": {
+     "filing_id": {
+      "type": "string",
+      "title": "Filing Id"
+     },
+     "section": {
+      "type": "string",
+      "title": "Section"
+     },
+     "text": {
+      "type": "string",
+      "title": "Text"
+     }
+    },
+    "type": "object",
+    "required": [
+     "filing_id",
+     "section",
+     "text"
+    ],
+    "title": "Evidence"
+   },
+   "HTTPValidationError": {
+    "properties": {
+     "detail": {
+      "items": {
+       "$ref": "#/components/schemas/ValidationError"
+      },
+      "type": "array",
+      "title": "Detail"
+     }
+    },
+    "type": "object",
+    "title": "HTTPValidationError"
+   },
+   "QAReq": {
+    "properties": {
+     "question": {
+      "type": "string",
+      "maxLength": 500,
+      "minLength": 3,
+      "title": "Question",
+      "examples": [
+       "What are the cybersecurity risks for ACMR-2023?"
+      ]
+     },
+     "filing_id": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Filing Id",
+      "description": "Optional scope, e.g. ACMR_2023. Also parsed from the question."
+     }
+    },
+    "type": "object",
+    "required": [
+     "question"
+    ],
+    "title": "QAReq"
+   },
+   "QAResp": {
+    "properties": {
+     "answer": {
+      "type": "string",
+      "title": "Answer"
+     },
+     "citations": {
+      "items": {
+       "$ref": "#/components/schemas/Citation"
+      },
+      "type": "array",
+      "title": "Citations"
+     },
+     "confidence": {
+      "type": "number",
+      "title": "Confidence"
+     },
+     "evidence": {
+      "items": {
+       "$ref": "#/components/schemas/Evidence"
+      },
+      "type": "array",
+      "title": "Evidence",
+      "default": []
+     },
+     "note": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Note"
+     }
+    },
+    "type": "object",
+    "required": [
+     "answer",
+     "citations",
+     "confidence"
+    ],
+    "title": "QAResp"
+   },
+   "RetrieveHit": {
+    "properties": {
+     "filing_id": {
+      "type": "string",
+      "title": "Filing Id"
+     },
+     "section": {
+      "type": "string",
+      "title": "Section"
+     },
+     "score": {
+      "type": "number",
+      "title": "Score"
+     }
+    },
+    "type": "object",
+    "required": [
+     "filing_id",
+     "section",
+     "score"
+    ],
+    "title": "RetrieveHit"
+   },
+   "RiskBullet": {
+    "properties": {
+     "text": {
+      "type": "string",
+      "title": "Text"
+     },
+     "topic": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Topic"
+     },
+     "topic_label": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Topic Label"
+     },
+     "section": {
+      "type": "string",
+      "title": "Section"
+     },
+     "filing_id": {
+      "type": "string",
+      "title": "Filing Id"
+     },
+     "score": {
+      "type": "number",
+      "title": "Score"
+     }
+    },
+    "type": "object",
+    "required": [
+     "text",
+     "section",
+     "filing_id",
+     "score"
+    ],
+    "title": "RiskBullet"
+   },
+   "RiskReq": {
+    "properties": {
+     "filing_id": {
+      "type": "string",
+      "title": "Filing Id",
+      "examples": [
+       "ACMR_2023"
+      ]
+     },
+     "max_bullets": {
+      "anyOf": [
+       {
+        "type": "integer",
+        "maximum": 5.0,
+        "minimum": 3.0
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Max Bullets",
+      "description": "3-5 (default from RISK_BULLETS, 4)"
+     }
+    },
+    "type": "object",
+    "required": [
+     "filing_id"
+    ],
+    "title": "RiskReq"
+   },
+   "RiskResp": {
+    "properties": {
+     "filing_id": {
+      "type": "string",
+      "title": "Filing Id"
+     },
+     "summary": {
+      "items": {
+       "type": "string"
+      },
+      "type": "array",
+      "title": "Summary"
+     },
+     "citations": {
+      "items": {
+       "$ref": "#/components/schemas/Citation"
+      },
+      "type": "array",
+      "title": "Citations"
+     },
+     "bullets": {
+      "items": {
+       "$ref": "#/components/schemas/RiskBullet"
+      },
+      "type": "array",
+      "title": "Bullets"
+     },
+     "warning": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ],
+      "title": "Warning"
+     }
+    },
+    "type": "object",
+    "required": [
+     "filing_id",
+     "summary",
+     "citations",
+     "bullets"
+    ],
+    "title": "RiskResp"
+   },
+   "ValidationError": {
+    "properties": {
+     "loc": {
+      "items": {
+       "anyOf": [
+        {
+         "type": "string"
+        },
+        {
+         "type": "integer"
+        }
+       ]
+      },
+      "type": "array",
+      "title": "Location"
+     },
+     "msg": {
+      "type": "string",
+      "title": "Message"
+     },
+     "type": {
+      "type": "string",
+      "title": "Error Type"
+     },
+     "input": {
+      "title": "Input"
+     },
+     "ctx": {
+      "type": "object",
+      "title": "Context"
+     }
+    },
+    "type": "object",
+    "required": [
+     "loc",
+     "msg",
+     "type"
+    ],
+    "title": "ValidationError"
+   }
+  }
+ }
+}
